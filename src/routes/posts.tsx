@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { getAllPosts } from '../utils/getPosts';
+import { useState }     from 'react';
+import { getAllPosts }  from '../utils/getPosts';
+import RecentPostCard   from '../components/RecentPostsButton';
 import { Container, Typography, Stack, Box, Chip, Pagination } from '@mui/material';
-import RecentPostCard from '../components/RecentPostsButton';
 
 export default function Posts() {
 const ALL_POSTS = getAllPosts();

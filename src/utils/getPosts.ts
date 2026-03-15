@@ -17,7 +17,7 @@ export function getAllPosts(): Post[] {
 
   for (const path in mdFiles) {
     const relativePath = path.replace('../posts/', '').replace('.md', '');
-    const id = relativePath.replace(/\//g, '-'); 
+    const id = relativePath.replace(/\//g, '_'); 
     
     const fileContent = (mdFiles[path] as any).default as string;
     const parsed = fm<any>(fileContent);
