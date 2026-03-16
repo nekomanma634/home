@@ -1,0 +1,61 @@
+---
+title:          "memo"
+date:           "2026-03-16"
+categories:     ["memo"]
+description:    ""
+imageUrl:       "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+---
+
+
+# 当ブログのMarkdown書き方チートシート
+
+当ブログでは、技術記事をより読みやすく、美しく表現するために、標準のMarkdownに加えていくつかの**独自拡張機能**を実装しています。
+
+この記事では、記事を執筆する際に使える便利な記法とプレビュー結果をご紹介します。
+
+---
+
+## 1. リッチなコードブロック（VS Code風）
+
+コードブロックは、VS Codeと同じテーマエンジン（Shiki）を採用しており、美しく正確なシンタックスハイライトを提供します。また、「開閉機能」や「コピーボタン」も標準搭載されています。
+
+### 基本的な書き方
+
+通常のMarkdownと同じく、バッククォート3つで囲み、言語名を指定します。（例: `cpp`, `rust`, `python`, `bash` など）
+
+**【入力】**
+```cpp:
+#include <iostream>
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+```
+
+### ファイル名や追加情報の表示
+
+言語名の後ろに `:`（コロン）または半角スペースを空けて文字を入力すると、タブのヘッダーにファイル名や補足情報を表示できます。
+
+**【入力：ファイル名を表示】**
+
+http://googleusercontent.com/immersive_entry_chip/0
+
+**💡 注意点:**
+Mermaidの記述に全角スペースが混ざっていたり、文法エラーがあると、自動的に**安全なエラーメッセージパネル**が表示され、サイトのレイアウト崩れを防いでくれます。
+
+---
+
+## 4. スタイリッシュな折りたたみ（アコーディオン）
+
+長い出力結果や、補足的な長いコードを隠しておきたい場合は、HTMLの `<details>` と `<summary>` タグを使います。
+デフォルトの無骨なデザインではなく、クリックすると矢印がクルッと回るスタイリッシュなデザインに自動変換されます。
+
+**【入力】**
+<details>
+<summary>長めのサンプルコードを見る</summary>
+
+(※ここに空行が必要です)
+
+
+http://googleusercontent.com/immersive_entry_chip/1
