@@ -306,6 +306,74 @@ export default function PostDetail() {
           rehypePlugins={[rehypeRaw]}
           components={{
             // ==========================================================
+            // ★ 追加: 見出し (h2, h3)
+            // ==========================================================
+            h2({ node, children, ...props }: any) {
+              return (
+                <Box component="h2" sx={{ color: '#f3f4f6', borderBottom: '1px solid #374151', pb: 1.5, mt: 7, mb: 3, fontSize: '1.75rem', fontWeight: 700 }} {...props}>
+                  {children}
+                </Box>
+              );
+            },
+            h3({ node, children, ...props }: any) {
+              return (
+                <Box component="h3" sx={{ color: '#f3f4f6', mt: 5, mb: 2.5, fontSize: '1.35rem', fontWeight: 700, borderLeft: '4px solid #60a5fa', pl: 1.5 }} {...props}>
+                  {children}
+                </Box>
+              );
+            },
+
+            // ==========================================================
+            // ★ 追加: 段落、リンク、太字
+            // ==========================================================
+            p({ node, children, ...props }: any) {
+              return (
+                <Box component="p" sx={{ mb: 3, lineHeight: 1.8, fontSize: '1.05rem', color: '#d1d5db', letterSpacing: '0.04em', wordBreak: 'break-word' }} {...props}>
+                  {children}
+                </Box>
+              );
+            },
+            a({ node, children, ...props }: any) {
+              return (
+                <Box component="a" sx={{ color: '#60a5fa', textDecoration: 'none', '&:hover': { textDecoration: 'underline', opacity: 0.8 } }} {...props}>
+                  {children}
+                </Box>
+              );
+            },
+            strong({ node, children, ...props }: any) {
+              return (
+                <Box component="strong" sx={{ color: '#ffffff', fontWeight: 600 }} {...props}>
+                  {children}
+                </Box>
+              );
+            },
+
+            // ==========================================================
+            // ★ 追加: リスト (ul, ol, li)
+            // ==========================================================
+            ul({ node, children, ...props }: any) {
+              return <Box component="ul" sx={{ mb: 3, pl: 3, color: '#d1d5db' }} {...props}>{children}</Box>;
+            },
+            ol({ node, children, ...props }: any) {
+              return <Box component="ol" sx={{ mb: 3, pl: 3, color: '#d1d5db' }} {...props}>{children}</Box>;
+            },
+            li({ node, children, ...props }: any) {
+              return <Box component="li" sx={{ mb: 1, lineHeight: 1.7, fontSize: '1.05rem', color: '#d1d5db' }} {...props}>{children}</Box>;
+            },
+
+            // ==========================================================
+            // ★ 追加: テーブル（表）
+            // ==========================================================
+            table({ node, children, ...props }: any) {
+              return <Box component="table" sx={{ width: '100%', borderCollapse: 'collapse', mb: 4, fontSize: '0.95rem' }} {...props}>{children}</Box>;
+            },
+            th({ node, children, ...props }: any) {
+              return <Box component="th" sx={{ border: '1px solid #4b5563', padding: '10px 16px', backgroundColor: '#1f2937', color: '#e5e7eb', fontWeight: 600 }} {...props}>{children}</Box>;
+            },
+            td({ node, children, ...props }: any) {
+              return <Box component="td" sx={{ border: '1px solid #4b5563', padding: '10px 16px', color: '#d1d5db' }} {...props}>{children}</Box>;
+            },
+            // ==========================================================
             // ★ Zenn風のインフォメーション（Alert）ブロック
             // ==========================================================
             blockquote({ node, children, ...props }: any) {
