@@ -10,6 +10,7 @@ import CheckIcon           from '@mui/icons-material/Check';
 import mermaid             from 'mermaid';
 import ExpandMoreIcon      from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon      from '@mui/icons-material/ExpandLess';
+import remarkGfm           from 'remark-gfm';
 
 // =====================================================================
 // 1. Mermaid の初期設定 (ダークテーマ)
@@ -303,11 +304,19 @@ export default function PostDetail() {
         }}
       >
         <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
           components={{
             // ==========================================================
             // ★ 追加: 見出し (h2, h3)
             // ==========================================================
+            h1({ node, children, ...props }: any) {
+              return (
+                <Box component="h1" sx={{ color: '#f3f4f6', borderBottom: '1px solid #374151', pb: 1.5, mt: 7, mb: 3, fontSize: '2.0rem', fontWeight: 700 }} {...props}>
+                  {children}
+                </Box>
+              );
+            },
             h2({ node, children, ...props }: any) {
               return (
                 <Box component="h2" sx={{ color: '#f3f4f6', borderBottom: '1px solid #374151', pb: 1.5, mt: 7, mb: 3, fontSize: '1.75rem', fontWeight: 700 }} {...props}>
@@ -362,16 +371,76 @@ export default function PostDetail() {
             },
 
             // ==========================================================
-            // ★ 追加: テーブル（表）
+            // ★ 修正: テーブル（表）の設定
             // ==========================================================
             table({ node, children, ...props }: any) {
-              return <Box component="table" sx={{ width: '100%', borderCollapse: 'collapse', mb: 4, fontSize: '0.95rem' }} {...props}>{children}</Box>;
+              return (
+                <Box sx={{ overflowX: 'auto', mb: 4 }}>
+                  <Box 
+                    component="table" 
+                    sx={{ 
+                      borderCollapse: 'collapse', 
+                      fontSize: '0.95rem',
+                      // 横幅100%をやめ、コンテンツの幅に合わせる（Qiita風）
+                      width: 'max-content', 
+                      maxWidth: '100%',
+                      margin: '0 auto 0 0' // 左寄せにする
+                    }} 
+                    {...props}
+                  >
+                    {children}
+                  </Box>
+                </Box>
+              );
+            },
+            tr({ node, children, ...props }: any) {
+              return (
+                <Box 
+                  component="tr" 
+                  sx={{ 
+                    borderBottom: '1px solid #374151',
+                    // 偶数行の背景色を少し明るくしてストライプ模様にする
+                    '&:nth-of-type(even)': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.03)'
+                    }
+                  }} 
+                  {...props}
+                >
+                  {children}
+                </Box>
+              );
             },
             th({ node, children, ...props }: any) {
-              return <Box component="th" sx={{ border: '1px solid #4b5563', padding: '10px 16px', backgroundColor: '#1f2937', color: '#e5e7eb', fontWeight: 600 }} {...props}>{children}</Box>;
+              return (
+                <Box 
+                  component="th" 
+                  sx={{ 
+                    border: '1px solid #4b5563', 
+                    padding: '10px 24px', // 余白を少し広めに取る
+                    backgroundColor: '#1f2937', 
+                    color: '#e5e7eb', 
+                    fontWeight: 600 
+                  }} 
+                  {...props}
+                >
+                  {children}
+                </Box>
+              );
             },
             td({ node, children, ...props }: any) {
-              return <Box component="td" sx={{ border: '1px solid #4b5563', padding: '10px 16px', color: '#d1d5db' }} {...props}>{children}</Box>;
+              return (
+                <Box 
+                  component="td" 
+                  sx={{ 
+                    border: '1px solid #4b5563', 
+                    padding: '10px 24px', 
+                    color: '#d1d5db' 
+                  }} 
+                  {...props}
+                >
+                  {children}
+                </Box>
+              );
             },
             // ==========================================================
             // ★ Zenn風のインフォメーション（Alert）ブロック
