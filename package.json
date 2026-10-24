@@ -19,7 +19,7 @@
     "@mui/material": "^7.3.9",
     "@shikijs/rehype": "^4.0.2",
     "front-matter": "^4.0.2",
-    "mermaid": "^11.13.0",
+    "mermaid": "^12.2.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-markdown": "^10.1.0",
