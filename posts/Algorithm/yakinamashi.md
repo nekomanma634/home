@@ -14,7 +14,7 @@ imageUrl:       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVVVI1UtQ
 
 # 1. 焼きなまし法とは（Simulated Annealing: SA）
 膨大な選択肢の中から最適な答え（大域的最適解）の近似値を探索するためのメタヒューリスティック・アルゴリズム.  
-また名前にある通り,このアルゴリズムは金属工学における「焼きなまし」の物理的な家庭をモデルにしています.
+また名前にある通り,このアルゴリズムは金属工学における「焼きなまし」の物理的な過程をモデルにしています.
 
 <img src="https://qiita-user-contents.imgix.net/https%3A%2F%2Fqiita-image-store.s3.ap-northeast-1.amazonaws.com%2F0%2F1530170%2F1dac41fd-2f72-815c-daee-e38a95bfab20.png?ixlib=rb-4.1.1&auto=format&gif-q=60&q=75&w=1400&fit=max&s=52b89392f6657899a60d41b2ac6e846b" width="600" height="350">
 
