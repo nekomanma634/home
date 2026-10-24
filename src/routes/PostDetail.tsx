@@ -11,6 +11,9 @@ import mermaid             from 'mermaid';
 import ExpandMoreIcon      from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon      from '@mui/icons-material/ExpandLess';
 import remarkGfm           from 'remark-gfm';
+import remarkMath          from 'remark-math';
+import rehypeKatex         from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 
 // =====================================================================
 // 1. Mermaid の初期設定 (ダークテーマ)
@@ -304,8 +307,8 @@ export default function PostDetail() {
         }}
       >
         <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeRaw]}
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeRaw, rehypeKatex]}
           components={{
             // ==========================================================
             // ★ 追加: 見出し (h2, h3)
