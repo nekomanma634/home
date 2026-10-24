@@ -119,7 +119,7 @@ const preprocessMarkdown = (content: string) => {
   if (!content) return '';
   return content.replace(
     /^:::note\s*(info|warn|alert)?\s*\r?\n([\s\S]*?)\r?\n^:::/gm,
-    (match, type, innerContent) => {
+    (_match, type, innerContent) => {
       const calloutType = type || 'info';
       const quotedContent = innerContent.split(/\r?\n/).map((line: string) => `> ${line}`).join('\n');
       return `> [!NOTE-${calloutType}]\n${quotedContent}`;
